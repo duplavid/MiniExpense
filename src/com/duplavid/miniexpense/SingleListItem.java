@@ -1,10 +1,11 @@
 package com.duplavid.miniexpense;
 
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,6 +17,7 @@ import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,17 +28,11 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.preference.PreferenceManager;
-import android.support.v4.view.ViewPager;
- 
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
  
 public class SingleListItem extends ListActivity {
 	private DatabaseHandler db;
@@ -45,6 +41,7 @@ public class SingleListItem extends ListActivity {
 	private Menu menu;
 	
 	private String date;
+	private String filedate;
 	
 	@Override
     public void onCreate(Bundle savedInstanceState) {
@@ -163,10 +160,16 @@ public class SingleListItem extends ListActivity {
 	            	    
 	            	    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd",Locale.UK);
 	            	    SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.UK);
+	            	    
+	            	    SimpleDateFormat iF = new SimpleDateFormat("yyyy MMMMM",Locale.UK);
+	            	    SimpleDateFormat oF = new SimpleDateFormat("yyyyMM",Locale.UK);
+	            	    Date ds;
+	            	    ds = iF.parse(date);
+	            	    filedate = oF.format(ds);
+	            	    
 	            	    for(Expense exp : expenses){
 	            			Date dt;
 	            			try {
-	            				
 	            				dt = inputFormat.parse(exp.getDate());
 	            				inouts.add(""+exp.getInout()+"");
 	            				amounts.add(""+exp.getAmount()+"");
@@ -184,7 +187,7 @@ public class SingleListItem extends ListActivity {
 	            			if (!folder.exists()){
 	            				folder.mkdir();
 	            			}
-	            			String filename = folder.toString() + "/"+date+".csv";
+	            			String filename = folder.toString() + "/"+filedate+".csv";
 	            			FileWriter fw = new FileWriter(filename);
 	
 	            			fw.append("Date");
@@ -226,12 +229,16 @@ public class SingleListItem extends ListActivity {
 	                } catch (InterruptedException e) {
 	                       // TODO Auto-generated catch block
 	                       e.printStackTrace();
-	                }
+	                } catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 	                return null;
 	             }
 	             @Override
 	             protected void onPostExecute(Void result) {
 	                    pd.dismiss();
+	                    
 	                    //Show a dialog that file was created
 	             		AlertDialog.Builder alertDialog = new AlertDialog.Builder(thisContext);
 	             		alertDialog.setTitle("Saved");
@@ -243,23 +250,20 @@ public class SingleListItem extends ListActivity {
 	             		
 	             		alertDialog.show();
 	             		
-	             		
 	             		//Show the file in its default application
-	             		File folder = new File(Environment.getExternalStorageDirectory().getPath()+"/MiniExpense");
-            			String filename = folder.toString() + "/"+date+".csv";
-	             		
-	             		Intent viewDoc = new Intent(Intent.ACTION_VIEW);
-	             		viewDoc.setDataAndType(
-	             		    Uri.fromFile(getFileStreamPath(filename)), 
-	             		    "application/csv");
+	                    try{
+							File file = new File(Environment.getExternalStorageDirectory().getPath()+"/MiniExpense/"+filedate+".csv");
+	            			
+		             		Intent viewDoc = new Intent(Intent.ACTION_VIEW);
+		             		viewDoc.setDataAndType(
+		             		    Uri.fromFile(file),
+		             		    "text/csv");
+		             		
+		             		startActivity(viewDoc);
+	                    }catch(ActivityNotFoundException anfe){
+	                    	anfe.printStackTrace();
+	                    }
 
-	             		PackageManager pm = getPackageManager();
-	             		List<ResolveInfo> apps = 
-	             		    pm.queryIntentActivities(viewDoc, PackageManager.MATCH_DEFAULT_ONLY);
-
-	             		if (apps.size() > 0)
-	             		    startActivity(viewDoc);
-	             		
 	             }
 	        };
 	        task.execute((Void[])null);
