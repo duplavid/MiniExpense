@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent"
+   android:tag="expense_view"
+   >
+<RelativeLayout
+   android:layout_width="fill_parent"
+   android:layout_height="wrap_content"
+   android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:scaleType="center"
+        android:src="@drawable/singleitem"
+        android:contentDescription="@string/imageDesc" />
+    
+    <TextView
+        android:id="@+id/downloadCSV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="31dp"
+        android:layout_marginTop="36dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="#3cabdc"
+		android:textColor="#FFFFFF"
+		android:padding="10dp"
+		android:text="@string/downloadCSV"
+		android:onClick="downloadCSV"
+		android:clickable="true"
+        android:typeface="sans" />
+
+</RelativeLayout>
+    <TableRow
+        android:id="@+id/tableRow0"
+        android:layout_height="wrap_content"  
+        android:layout_width="fill_parent"  
+        >
+
+        <TextView
+            android:id="@+id/columnAdditional"
+            android:layout_width="0dip"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:paddingTop="2.5dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#3cabdc"
+            android:textStyle="bold"
+            android:gravity="left"
+            android:text="@string/information"
+            />
+
+        <TextView
+            android:id="@+id/columnPayin"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingTop="2.5dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textStyle="bold"
+            android:textColor="#3cabdc"
+            android:gravity="right"
+            android:text="@string/income" />
+        
+        
+        <TextView
+            android:id="@+id/columnPayout"
+            android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:paddingTop="2.5dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="7dp"
+            android:textStyle="bold"
+            android:textColor="#3cabdc"
+            android:gravity="right"
+            android:text="@string/expense" />
+        
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:contentDescription="@string/deleteRow"
+             />
+        
+    </TableRow>
+
+	<ListView
+    android:id="@+id/android:list"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    />
+
+</LinearLayout>

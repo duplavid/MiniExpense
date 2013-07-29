@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MiniExpense</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_main">MiniExpense</string>
+    <string name="title_newexpense">Add new expense</string>
+    <string name="title_expenseview">Expenses</string>
+
+    
+    <string name="payinout">Income/expense:</string>
+    <string name="addate">Set date of payment</string>
+    <string name="cashIO_prompt">Choose a cash type</string>
+    <string-array name="cashIO_arrays">
+		<item>Income</item>
+        <item>Expense</item>
+    </string-array>
+    <string name="howmuch">Amount:</string>
+    <string name="additionalinfos">Additional information:</string>
+    <string name="submit">Submit</string>
+    <string name="imageDesc">Expense photo</string>
+    <string name="euro">Euro</string>
+    <string name="dollar">Dollar</string>
+    <string name="downloadCSV">Download CSV</string>
+    <string name="deleteRow">Delete row</string>
+    <string name="information">Information</string>
+    <string name="income">Income</string>
+    <string name="expense">Expense</string>
+    <string name="dateNotSelected">Payment date wasn\'t selected</string>
+
+</resources>

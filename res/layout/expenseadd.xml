@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+	<LinearLayout
+	    android:layout_width="fill_parent"
+	    android:layout_height="462dp"
+	    android:orientation="vertical" >
+    
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical">
+		    
+			<ImageView
+		        android:id="@+id/imageView1"
+		        android:layout_width="match_parent"
+		        android:layout_height="120dp"
+		        android:scaleType="center"
+		        android:src="@drawable/addexpense"
+		        android:contentDescription="@string/imageDesc" />
+			    
+		    <TextView
+		        android:id="@+id/addnewexpense"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="31dp"
+		        android:layout_marginTop="36dp"
+		        android:text="@string/title_newexpense"
+		        android:textAppearance="?android:attr/textAppearanceLarge"
+		        android:background="#3cabdc"
+				android:textColor="#FFFFFF"
+				android:padding="10dp"
+		        android:typeface="sans" />
+	    
+	    </RelativeLayout>
+	
+	    <TextView
+	        android:id="@+id/textView2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="31dp"
+			android:textStyle="bold"
+	        android:padding="10dp"
+	        android:text="@string/howmuch"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	    <EditText
+	        android:id="@+id/editText1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_marginLeft="31dp"
+	        android:layout_marginRight="31dp"
+	        android:padding="10dp"
+	        android:ems="10"
+	        android:inputType="numberDecimal" />
+	
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="31dp"
+	        android:layout_marginRight="31dp"
+	        android:padding="10dp"
+	        android:textStyle="bold"
+	        android:text="@string/payinout"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	    <Spinner
+	        android:id="@+id/spinner1"
+	        android:layout_width="120dp"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="31dp"
+	        android:layout_marginRight="31dp"
+	        android:padding="10dp"
+	        android:entries="@array/cashIO_arrays"
+	        android:prompt="@string/cashIO_prompt" />
+		
+		<TextView
+	        android:id="@+id/textView4"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="31dp"
+	        android:layout_marginRight="31dp"
+	        android:padding="10dp"
+	        android:textStyle="bold"
+	        android:text="@string/addate"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+		<TextView
+		    android:id="@+id/setDate"
+		    android:layout_width="fill_parent"
+    		android:layout_height="wrap_content"
+   			android:gravity="center"
+		    android:padding="10dp"
+		    android:text="@string/dateNotSelected"
+		    android:textAppearance="?android:attr/textAppearanceMedium"
+		    android:textColor="#3cabdc"
+		    android:textStyle="bold" />
+
+		<Button
+		    android:id="@+id/button2"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		   	android:layout_marginLeft="31dp"
+	        android:layout_marginRight="31dp"
+	        android:onClick="showDatePickerDialog"
+	        android:text="@string/addate" />
+	
+	    <TextView
+	        android:id="@+id/textView3"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="31dp"
+	        android:layout_marginRight="31dp"
+	        android:padding="10dp"
+	        android:textStyle="bold"
+	        android:text="@string/additionalinfos"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	
+	    <EditText
+	        android:id="@+id/editText2"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="31dp"
+	        android:layout_marginRight="31dp"
+	        android:padding="10dp"
+	        android:ems="10"
+	        android:inputType="textMultiLine" />
+	    
+	     <Button
+	        android:id="@+id/button1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="31dp"
+	        android:padding="10dp"
+	        android:onClick="saveContents"
+	        android:text="@string/submit" />
+
+	</LinearLayout>
+
+</ScrollView>
