@@ -36,9 +36,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_EXPENSE_TABLE = "CREATE TABLE " + TABLE_EXPENSES + "("
-                + KEY_ID + " INTEGER PRIMARY KEY," + KEY_INOUT + " INTEGER,"
+                + KEY_ID + " INTEGER PRIMARY KEY,"
+        		+ KEY_INOUT + " INTEGER,"
                 + KEY_DATE + " TEXT,"
-                + KEY_AMOUNT + " DECIMAL(10,5)," + KEY_ADDIT + " TEXT" + ")";
+                + KEY_AMOUNT + " DECIMAL(10,5),"
+                + KEY_ADDIT + " TEXT" + ")";
         db.execSQL(CREATE_EXPENSE_TABLE);
     }
  
@@ -158,19 +160,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Getting expenses by date
     public ArrayList<Expense> getExpensesByDate(String date) {
 		ArrayList<Expense> expenseList = new ArrayList<Expense>();
-		String dt = null;
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy MMMMM");
-		SimpleDateFormat output = new SimpleDateFormat("yyyy-MM");
-		try {
-			Date dateStr = formatter.parse(date);
-			dt = output.format(dateStr);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		String selectQuery = "SELECT * FROM "+TABLE_EXPENSES+" WHERE strftime('%Y-%m',"+KEY_DATE+") = '"+dt+"' ORDER BY "+KEY_DATE+" DESC";
+		String selectQuery = "SELECT * FROM "+TABLE_EXPENSES+" WHERE strftime('%Y-%m',"+KEY_DATE+") = '"+date+"' ORDER BY "+KEY_DATE+" DESC";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);

@@ -1,15 +1,12 @@
 package com.duplavid.miniexpense;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 import android.app.ActionBar;
@@ -22,8 +19,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -161,7 +156,7 @@ public class SingleListItem extends ListActivity {
 	            	    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd",Locale.UK);
 	            	    SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.UK);
 	            	    
-	            	    SimpleDateFormat iF = new SimpleDateFormat("yyyy MMMMM",Locale.UK);
+	            	    SimpleDateFormat iF = new SimpleDateFormat("yyyy-MM",Locale.UK);
 	            	    SimpleDateFormat oF = new SimpleDateFormat("yyyyMM",Locale.UK);
 	            	    Date ds;
 	            	    ds = iF.parse(date);

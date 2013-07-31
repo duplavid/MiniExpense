@@ -55,7 +55,7 @@ public class ExpenseView extends ListFragment {
 	    ArrayList<Expense> expenses = db.getExpensesGrouped();
 	    ArrayList<String> values = new ArrayList<String>();
 	    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd",Locale.UK);
-	    SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy MMMMM",Locale.UK);
+	    SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM",Locale.UK);
 	    for(Expense exp : expenses){
 		Date date;
 		try {
